@@ -1,0 +1,568 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed&family=Bellefair&family=Exo+2:wght@400;500&family=Nunito+Sans:opsz@6..12&family=Open+Sans&family=Oxanium&family=Poppins&family=Roboto+Slab&family=Roboto:ital,wght@0,100;0,400;1,400&family=Sora:wght@500&family=Space+Grotesk&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    width: 100%;
+    font-size: 100%;
+}
+main{
+    width: 100%;
+    height: 100vh;
+    padding: 2rem;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+}
+
+.containerLayout{
+
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 50px;
+    place-items: center;
+    
+
+}
+
+
+.EmployeeCard{
+    width: 400px;
+    height: 250px;
+    box-shadow: 0 0 4px rgb(151, 151, 151);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    padding: 1rem;
+    background: linear-gradient(180deg, #007AFF 20%, white  20%);
+    
+}
+
+
+
+
+.EmployeeCard .image{
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+    border-radius: 50%;
+    padding: 5px;
+    background-color: white;
+}
+
+.EmployeeCard .image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.EmployeeCard .name{
+    font-weight: bold;
+}
+
+.EmployeeCard .jobTitle{
+    color: rgb(97, 95, 95);
+}
+
+.EmployeeCard .EmailId{
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: rgb(97, 95, 95);
+    text-align: center;
+}
+
+.EmployeeCard .phoneNumber{
+    color: rgb(97, 95, 95);
+}
+
+.EmployeeCard .gender{
+    color: rgb(97, 95, 95);
+}
+
+.FilterContainer{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.FilterContainer input{
+    width: 20%;
+    border: none;
+    border-bottom: 1px solid black;
+    font-size: 1.4rem;
+    outline: none;
+}
+
+
+
+
+
+
+.formContainer{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(43, 42, 42, 0.63);
+    z-index: 2;
+    display: grid;
+    place-items: center;
+}
+
+.formContainer .form{
+    width: 500px;
+    height: 600px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px black;
+    position: relative;
+
+    
+}
+
+.EditContainer{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    display: grid;
+    place-content: center;
+    background-color: rgba(51, 50, 50, 0.685);
+    top: 0;
+    left: 0;
+    transition: 0.5s all ease-in-out;
+}
+
+.EditContainer .EmployeeCard{
+    width: 500px;
+    height: 500px;
+    background-color: white;
+}
+
+.EditContainer .EmployeeCard::before{
+    content: '';
+    position: absolute;
+    top: 0%;
+    width: 100%;
+
+    border: 3px solid #287ACE;
+}
+
+.EditContainer .EmployeeCard .EmailId{
+    width: 35%;
+    overflow: visible;
+    text-overflow: unset;
+    color: rgb(97, 95, 95);
+    text-align: center;
+}
+
+.EditContainer .EmployeeCard .image{
+    width: 150px;
+    height: 150px;
+    position: relative;
+}
+
+.EditImage{
+    position: absolute;
+    top: 83%;
+    right: 40%;
+    color: #287ACE;
+    background-color: white;
+    width: 30px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    font-size: 1.2rem;
+    border-radius: 50%;
+}
+
+.EditContainer .EmployeeCard .selectGender{
+    display: flex;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    gap: 10px;
+
+}
+
+.EditContainer .EmployeeCard .selectGender div input{
+    box-shadow: none;
+    width: 20px;
+    height: 20px;
+    accent-color: rgb(0, 81, 255);
+
+}
+
+.EditContainer .EmployeeCard .selectGender div{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+
+.ShowDetails{
+    position: absolute;
+    top: 3%;
+    right: 3%;
+    background-color: rgb(129, 127, 127);
+    color: rgb(228, 225, 225);
+    width: 25px;
+    height: 25px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.EditDetails{
+    position: absolute;
+    bottom: 3%;
+    right: 3%;
+    font-size: 1.4rem;
+    color: #287ACE;
+}
+
+.closeDetails{
+    position: absolute;
+    top: 3%;
+    right: 3%;
+    font-size: 1.4rem;
+}
+
+.DeleteEmployee{
+    position: absolute;
+    top: 3%;
+    left: 3%;
+    font-size: 1.4rem;
+    color: red;
+}
+
+.formContainer .form .image{
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+    border-radius: 50%;
+    box-shadow: 0 0 4px black;
+}
+
+.formContainer .form .image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.close{
+    position: absolute;
+    top: 1%;
+    right: 2%;
+    font-size: 1.5rem;
+}
+
+.addEmployee{
+    width: 140px;
+    white-space: nowrap;
+}
+
+.formContainer .form input{
+    border: none;
+    width: 80%;
+    height: 50px;
+    box-shadow: 0 0 4px rgb(184, 182, 182);
+    border-radius: 10px;
+    padding-left: 6px;
+}
+
+.formContainer .form .selectGender{
+    display: flex;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    gap: 10px;
+
+}
+
+.formContainer .form .selectGender div input{
+    box-shadow: none;
+    width: 20px;
+    height: 20px;
+    accent-color: rgb(0, 81, 255);
+
+}
+
+.formContainer .form .selectGender div{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.FilterContainer .selectGender{
+    display: flex;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    gap: 10px;
+
+}
+
+.FilterContainer .selectGender div input{
+    box-shadow: none;
+    width: 20px;
+    height: 20px;
+    accent-color: rgb(0, 81, 255);
+
+}
+
+.FilterContainer .selectGender div{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+button{
+    width: 70px;
+    height: 30px;
+    font-size: 1.2rem;
+    border: none;
+    outline: none;
+    background-color: rgb(44, 138, 245);
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 5px 0px rgb(28, 70, 119);
+}
+
+button:active{
+    transform: translateY(5px);
+    box-shadow: none;
+}
+
+
+.AlphabetContainer{
+    width: 100%;
+    
+
+}
+
+.AlphabetContainer ul{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.AlphabetContainer ul li{
+    width: 50px;
+    height: 50px;
+    border: 1px solid white;
+    list-style: none;
+    background-color: #007AFF;
+    color: white;
+    display: grid;
+    place-items: center;
+    font-size: 1.4rem;
+    box-shadow: 0 0 4px rgb(110, 109, 109);
+    
+}
+
+
+
+
+@media (min-width: 100px) and (max-width: 600px) {
+
+    html{
+        font-size: 70%;
+    }
+    
+
+    .containerLayout{
+
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        row-gap: 50px;
+        
+    
+    }
+
+    .formContainer .form{
+        width: 350px;
+        height: 550px;
+        
+    
+        
+    }
+
+    .EditContainer .EmployeeCard{
+        width: 350px;
+        height: 500px;
+        background-color: white;
+    }
+
+    .AlphabetContainer ul li{
+        width: 40px;
+        height: 40px;
+        
+        
+    }
+    .AlphabetContainer ul{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .FilterContainer{
+        position: relative;
+    }
+
+    .addEmployee{
+        position: fixed;
+        bottom: 2%;
+        right: 2%;
+        z-index: 2;
+    }
+
+    #search{
+        border-bottom: none;
+        box-shadow: 0 0 4px rgb(167, 164, 164);
+        width: 90%;
+        height: 6vh;
+        padding-left: 5px;
+        border-radius: 10px;
+    }
+
+    .FilterContainer .selectGender{
+        gap: 5px;
+    
+    }
+
+
+
+    .FilterContainer .selectGender div{
+        display: flex;
+        align-items: center;
+        gap: 2px;
+    }
+
+    .FilterContainer{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        justify-content: space-between;
+    }
+    
+
+
+}
+
+
+@media (min-width: 600px) and (max-width: 1024px) {
+
+    html{
+        font-size: 100%;
+    }
+    
+
+    .containerLayout{
+
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 50px;
+        
+    
+    }
+
+    .formContainer .form{
+        width: 400px;
+        height: 600px;
+        
+    
+        
+    }
+
+    .EditContainer .EmployeeCard{
+        width: 400px;
+        height: 500px;
+        background-color: white;
+    }
+
+    .AlphabetContainer ul li{
+        width: 40px;
+        height: 40px;
+        
+        
+    }
+    .AlphabetContainer ul{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .FilterContainer{
+        position: relative;
+    }
+
+    /* .addEmployee{
+        position: fixed;
+        bottom: 2%;
+        right: 2%;
+        z-index: 2;
+    } */
+
+    #search{
+        border-bottom: none;
+        box-shadow: 0 0 4px rgb(167, 164, 164);
+        width: 40%;
+        height: 6vh;
+        padding-left: 5px;
+        border-radius: 10px;
+    }
+
+    .FilterContainer .selectGender{
+        gap: 5px;
+    
+    }
+
+
+
+    .FilterContainer .selectGender div{
+        display: flex;
+        align-items: center;
+        gap: 2px;
+    }
+
+    .FilterContainer{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: space-between;
+    }
+    
+
+
+}
